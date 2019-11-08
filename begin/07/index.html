@@ -1,0 +1,42 @@
+<script src="../vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+
+<div id="app">
+    <p>
+        <label for="question">Question</label>
+        <input type="text" name="question" id="question" v-model="question">
+    </p>
+    <p>
+        {{ answer }}
+    </p>
+</div>
+
+<script>
+
+new Vue({
+    el: "#app",
+    data: {
+        question: '',
+        answer: "Impossible to get the answer "
+    },
+    watch: {
+        question: function(newQuestion, oldQuestion) {
+            this.answer = "Waiting ..... ⌛️"
+            this.getDebounceAnswer();
+        }
+    },
+    created() {
+        this.getDebounceAnswer = debouce(this.getAnswers, 500)
+    },
+    methods: {
+        getAnswers() {
+            if(this.question.indexOf('?') === -1) {
+                this.answer = 'Questions usually contain a question mark 😉';
+                return ;
+            }
+            this.answer = 'Thinking .... 🤔'
+        }
+    },
+})
+
+</script>

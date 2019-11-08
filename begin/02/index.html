@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="https://unpkg.com/primitive-ui/dist/css/main.css"">
+
+<script src="vue.js"></script>
+
+<div id="app">
+    <blog-post title="Les amis du Javascript"
+    text="While explicitly defined props are preferred for passing information 
+        to a child component, authors of component libraries can’t always foresee 
+        the contexts in which their components might be used. That’s why components 
+        can accept arbitrary attributes, which are 
+        added to the component’s root element." 
+    v-bind:likes="12"
+    author="Evan You"
+    >
+
+    </blog-post>
+</div>
+
+<script>
+    Vue.component('blog-post', {
+        props: {
+            title: String,
+            text: String,
+            likes: Number,
+            author: String
+        },
+        template: `
+            <div>
+                <h3>{{ title }}</h3> <span>{{likes}} likes </span>
+                <br>
+                <article>{{ text }}</article>
+                <br>
+                <spans>{{ author }}</span>
+            </div>
+        `
+    })
+    new Vue({
+        el: "#app"
+    })
+</script>

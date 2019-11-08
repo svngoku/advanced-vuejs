@@ -1,0 +1,84 @@
+<script src="vue.js"></script>
+
+<script>
+    // const validationPlugin = {
+    //     install (Vue) {
+    //         computed: {
+    //             $v() {
+    //                 let valid = true
+    //                 const errors = []
+    //                 const rules = this.$options.validation
+
+    //                 Object.keys(rules).forEach(k => {
+    //                     const rule = rules[k]
+    //                     const value = this[k]
+    //                     const result = rule.validate(value)
+    //                     if(!result) {
+    //                         valid = false
+    //                     }
+    //                 })
+    //             }
+    //         },
+    //     }
+    // }
+</script>
+<div id="app">
+    <form @submit.prevent="checkDataForm" action="#" method="post">
+        <h3>Form validation</h3>
+        <p v-if="errors.length"> Please check the following error's</p>
+        <ul v-if="!validation" style="color:red;">
+            <li  v-for="error in errors" >{{ error }}</li>
+        </ul>
+        <p>
+            <label for="name">Name<label>
+            <input type="text" name="name" id="name" v-model="name">
+        </p>
+        <p>
+            <label for="email">Email<label>
+            <input type="email" email="email" id="email" v-model="email">
+        </p>
+
+        <p>
+            <button type="submit">Submit</button>
+        </p>
+    </form>
+</div>
+
+
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            errors: [],
+            name: "",
+            email: "",
+            validation: false
+        },
+        computed: {
+            
+        },
+        methods: {
+            checkDataForm: function(e) {
+                this.errors = [];
+
+                if(!this.name && !this.email){
+                    this.errors.push('Name required');
+                    this.errors.push('Email required');
+                }
+
+                if(this.name.length <= 5) {
+                    this.errors.push('you need more data in your fucking name');
+                }
+
+                e.preventDefault();
+            },
+            validate(e) {
+                if(!this.validation) {
+                    e.preventDefault();
+                    alert('not valid');
+                }
+            }
+        }
+    })
+
+</script>

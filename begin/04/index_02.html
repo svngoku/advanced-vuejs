@@ -1,0 +1,98 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://unpkg.com/primitive-ui/dist/css/main.css" />
+    <script src="vue.js"></script>
+
+</head>
+<body>
+    <div id="app" class="container">
+        <form @submit="validate">
+          <p v-if="!$v.valid">
+              <h3>Linting fields</h3>
+              <p v-if="$v.errors.length"> Please check the following error's: </p>
+              <ul style="color:red">
+                <li v-for="error in $v.errors">
+                  {{ error }}
+                </li>
+              </ul>
+          </p>
+          <p>
+            <label for="Text">Name</label>
+            <input v-model="text" placeholder="name">
+          </p>
+          <br>
+          <p>
+            <label for="email">Email</label>
+            <input v-model="email" id="email" placeholder="email@test.com">
+      
+          </p>
+      
+          <input type="submit" :disabled="!$v.valid">
+        </form>
+      </div>
+      
+</body>
+
+<script>
+const validationPlugin = {
+    install (Vue) {
+        Vue.mixin({
+            computed: {
+                $v() {
+                    let valid = true
+                    const errors = []
+                    const rules = this.$options.validations
+
+                    Object.keys(rules || {}).forEach(k => {
+                        const rule = rules[k]
+                        const value = this[k]
+                        const { validate, message} = rule
+                        const result = validate(value)
+                        if(!result) {
+                            valid = false
+                            errors.push(message(k, value))
+                        }
+                    })
+
+                    return {
+                      valid, errors
+                    }
+                }
+            }
+        })
+    }
+};
+
+
+Vue.use(validationPlugin)
+
+const emailRE = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+new Vue({
+  el: '#app',
+  data: {
+    text: 'foo',
+    email: ''
+  },
+  validations: {
+    text: {
+      validate: value => value.length >= 5,
+      message: (key, value) => `${key} should have a min length of 5, but got ${value.length}`
+    },
+    email: {
+      validate: value => emailRE.test(value),
+      message: key => `${key} must be a valid email`
+    }
+  },
+  methods: {
+    validate (e) {
+      if (!this.$v.valid) {
+        e.preventDefault()
+        alert('not valid!')
+      }
+    }
+  }
+})
+</script>

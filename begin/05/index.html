@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://unpkg.com/primitive-ui/dist/css/main.css" />
+    <title>vuejs in deep</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{ $t('welcome-message') }}</h1>
+
+        <button @click="changeLanguage('en')" >English</button>
+        <button @click="changeLanguage('nl')" >Dutch</button>
+        <button @click="changeLanguage('fr')" >French</button>
+
+    </div>
+    <script src="../vue.js"></script>
+
+    <script>
+        const i18Plugin = {
+            install(Vue, locales) {
+                Vue.prototype.$t = function (id) {
+                    return locales[this.$root.lang][id]
+                }
+            }
+        }
+
+        Vue.use(i18Plugin, {
+            en: {'welcome-message': 'Hello'},
+            fr: {'welcome-message': 'Bonjour'},
+            nl: {'welcome-message': 'Hallo'},
+        })
+
+
+        new Vue({
+            el: "#app",
+            data: {
+                lang: "en", // data props need to be reactive
+            },
+            methods: {
+                changeLanguage(lang) {
+                    this.lang = lang;
+                }
+            }
+        })
+    
+    </script>
+</body>
+</html>
