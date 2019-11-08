@@ -13,3 +13,5 @@ This is the companion repository to the Vue Advanced courses.
 4. Form Validation
 
 5. Internationalization
+
+6. Watchers & Computed props

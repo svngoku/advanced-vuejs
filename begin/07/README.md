@@ -27,4 +27,4 @@ new Vue({
 
 ## Computed
 
-A computed property is a feature that help us to avoid any `complex logic` on VueJs instance or Code. 
+A computed property is a feature that help us to avoid any `complex logic` on VueJs instance or Code.

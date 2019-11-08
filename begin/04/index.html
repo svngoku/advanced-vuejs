@@ -1,27 +1,4 @@
-<script src="vue.js"></script>
-
-<script>
-    // const validationPlugin = {
-    //     install (Vue) {
-    //         computed: {
-    //             $v() {
-    //                 let valid = true
-    //                 const errors = []
-    //                 const rules = this.$options.validation
-
-    //                 Object.keys(rules).forEach(k => {
-    //                     const rule = rules[k]
-    //                     const value = this[k]
-    //                     const result = rule.validate(value)
-    //                     if(!result) {
-    //                         valid = false
-    //                     }
-    //                 })
-    //             }
-    //         },
-    //     }
-    // }
-</script>
+<script src="../vue.js"></script>
 <div id="app">
     <form @submit.prevent="checkDataForm" action="#" method="post">
         <h3>Form validation</h3>
