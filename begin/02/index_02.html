@@ -1,0 +1,61 @@
+<link rel="stylesheet" href="https://unpkg.com/primitive-ui/dist/css/main.css" />
+
+
+<script src="../vue.js"></script>
+
+<div id="app" class="container">
+    <h3>Product list</h3>
+    <product-list></product-list>
+
+</div>
+
+<script>
+
+Vue.component('product-list', {
+    template: `
+        <div>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Inventory</th>
+                    <th>Price</th>
+                </tr>
+                <tr v-for="p,i in products" :key="i">
+                    <td>{{ p.name }}</td>
+                    <td>{{ p.inventory }}s</td>
+                    <td>{{ p.unit_price }}</td>
+                </tr>
+            </table>
+        </div>
+    `,
+    data() {
+        return {
+            products: [
+                {
+                    name: "chair",
+                    inventory: 5,
+                    unit_price: 45.99
+                },
+                {
+                    name: "table",
+                    inventory: 10,
+                    unit_price: 123.75
+                }
+            ]
+        };
+    }
+});
+
+
+Vue.component('product', {
+    template: `<div><slot></slot></div>`
+
+});
+
+
+new Vue({
+    el: "#app"
+})
+
+</script>
+

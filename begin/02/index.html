@@ -3,7 +3,7 @@
 <script src="../vue.js"></script>
 
 
-<div id="app">
+<div id="app" class="container">
     <blog-post title="Les amis du Javascript"
     text="While explicitly defined props are preferred for passing information 
         to a child component, authors of component libraries can’t always foresee 
@@ -12,9 +12,7 @@
         added to the component’s root element." 
     v-bind:likes="12"
     author="Evan You"
-    >
-
-    </blog-post>
+    ></blog-post>
 </div>
 
 <script>
@@ -31,7 +29,7 @@
                 <br>
                 <article>{{ text }}</article>
                 <br>
-                <spans>{{ author }}</span>
+                <span>{{ author }}</span>
             </div>
         `
     })
