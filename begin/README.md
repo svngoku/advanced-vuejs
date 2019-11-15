@@ -22,3 +22,5 @@ This is the companion repository to the Vue Advanced courses.
 8. Mixins
 
 9. Filters
+
+10. Custom directives

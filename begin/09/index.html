@@ -1,0 +1,54 @@
+<script src="../vue.js"></script>
+
+
+<div id="app">
+    <p>Data from <kbd>Hello Mixin</kbd> </p>
+    <h4>{{ $data.name }}</h4>
+    <br>
+
+    <p>Data from <kbd>Message Mixin</kbd> </p>
+
+    {{ $data.message }}
+
+</div>
+
+<script>
+
+const HelloMixin = {
+data: {
+    name :"Charlie"
+},
+created: function () {
+    this.running();
+  },
+  methods: {
+    running: function(){
+        return "i'm running".toLocaleUpperCase();
+    },
+    getMessage: function() {
+        console.log(this.$data.name)
+    }
+  }
+}
+
+const Message = {
+    data: {
+        message: "unknow",
+        sender: "Jonh Doe"
+    },
+    methods: {
+        getMessage() {
+            return `${this.message} <br> ${this.sender}`
+        }
+    },
+}
+
+
+const vm = new Vue({
+    el: "#app",
+    mixins: [HelloMixin, Message],
+});
+</script>
+
+
+    
