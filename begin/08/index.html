@@ -1,0 +1,43 @@
+<script src="../vue.js"></script>
+<script src="./TweenMax.js"></script>
+<link rel="stylesheet" href="style.css">
+
+<div id="app">
+    <h3 class="centered">Scroll me</h3>
+    <div class="box" v-scroll="handleScroll">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In velit soluta dolorum impedit commodi voluptas fuga nam officia nulla! Odit dignissimos explicabo pariatur 
+            labore similique dolores sed quam atque ipsam.</p>
+    </div>
+</div>
+
+<script>
+
+Vue.directive('scroll', {
+    inserted: function(el, binding) {
+        let f = function(evt) {
+            if(binding.value(evt, el)) {
+                window.removeEventListener('scroll',f);
+            }
+        };
+        window.addEventListener("scroll",f);
+    }
+});
+new Vue({
+    el: "#app",
+    methods: {
+        handleScroll: function(evt,el,) {
+            if(window.scrollY > 50) {
+                TweenMax.to(el, 1.5, {
+                    y: -10,
+                    opacity: 1,
+                    ease: Sine.easeOut
+                })
+            }
+            return window.scrollY > 100;
+        }
+    },
+});
+</script>
+
+
+    
