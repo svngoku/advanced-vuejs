@@ -1,6 +1,7 @@
 ![vuejs](https://peczis.pl/png/vue.png)
 
 # Advanced Vuejs
+
 This is the companion repository to the Vue Advanced courses.
 
 ## What we learn ?
@@ -15,12 +16,14 @@ This is the companion repository to the Vue Advanced courses.
 
 5. Internationalization
 
-6. Watchers & Computed props
+6. Routing 
 
-7. Transition
+7. Watchers  & Computed props in Vuejs
 
-8. Mixins
+8. Custom directives
 
-9. Filters
+9. Mixins
 
-10. Custom directives
+10. Filters
+
+11. Transition
