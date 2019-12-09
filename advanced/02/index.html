@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Todo App</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/primitive-ui/dist/css/main.css" />
+
+</head>
+<body>
+    <div id="app" class="container">
+        <h2>Add task</h2>
+        <input type="text" placeholder="description" v-model="desc">
+        <button class="round-button" type="submit" @click="addTask">add</button>
+
+
+        <h2>All tasks</h2>
+        <ol>
+            <li v-for="task in tasks" v-text="task.description"></li>
+        </ol>
+
+        <hr>
+
+        <h2>Uncompleted tasks</h2>
+        <ol>
+            <li v-for="task in inCompletedtask" v-text="task.description"></li>
+        </ol>
+    </div>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            tasks: [
+                {description: 'Ta da', comppleted: true},
+                {description: 'Custom app', comppleted: false},
+            ]
+        },
+        props: {
+            desc: String,
+            status: {
+                type: Boolean,
+                default: false
+            }
+        },
+        computed: {
+            inCompletedtask() {
+                return this.tasks.filter(task => !task.comppleted);
+            },
+            StatusChanged() {
+                return !this.tasks.comppleted;
+            },
+        },
+        methods: {
+            addTask() {
+                this.tasks.push({
+                    description: this.desc,
+                    comppleted: this.status
+                });
+                this.desc = '';
+            }
+        },
+    });
+</script>
+</body>
+
+</html>
