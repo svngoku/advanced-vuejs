@@ -8,8 +8,7 @@ new Vue({
             props: ['count'],
             template: `<div>{{ count }}</div>`
         }
-    },
-    
+    }
 })
 
 

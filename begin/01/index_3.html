@@ -1,0 +1,38 @@
+<script src="../vue.js"></script>
+<script src="./src/store.js"></script>
+
+
+<div id="app">
+    <p>A: {{ X }}</p>
+    <button @click="setX(X + 1)">Increment</button>
+    <button @click="setX(X - 1)">Decrement</button>
+    <hr>
+    <second-component></second-component>
+</div>
+
+<script>
+
+Vue.component('second-component', {
+    template: `<p> B: {{ X }} </p>`,
+    computed: {
+        X() {
+            return store.X;
+        }
+    },
+})
+new Vue({
+    el: "#app",
+    computed: {
+        X() {
+            return store.X;
+        }
+    },
+    methods: {
+        setX: mutations.setX
+    },
+
+
+});
+
+
+</script>
