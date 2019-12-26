@@ -6,9 +6,11 @@ This is the companion repository to the Vue Advanced courses.
 
 ## What we learn ?
 
-1. State Management
+## Begin
 
-2. Components
+1. [State Management](https://)
+
+2. Components  
 
 3. Event Handling
 
@@ -16,7 +18,7 @@ This is the companion repository to the Vue Advanced courses.
 
 5. Internationalization
 
-6. Routing 
+6. Routing
 
 7. Watchers  & Computed props in Vuejs
 
@@ -27,3 +29,21 @@ This is the companion repository to the Vue Advanced courses.
 10. Filters
 
 11. Transition
+
+12. Slots
+
+13. Store
+
+14. Plug-Ins (fonctionnality)
+
+15. Dynamic & Async Components : Keep Alive
+
+16. Server Side Rendering
+
+17. API Composition
+
+18. API ( axios , fetch )
+
+## Advanced
+
+In the second part we have a folder with advanced [vuejs use case](https://) .
