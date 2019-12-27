@@ -15,20 +15,20 @@
 <script>
 
 const HelloMixin = {
-data: {
-    name :"Charlie"
-},
-created: function () {
-    this.running();
-  },
-  methods: {
-    running: function(){
-        return "i'm running".toLocaleUpperCase();
+    data: {
+        name :"Charlie"
     },
-    getMessage: function() {
-        console.log(this.$data.name)
+    created: function () {
+        this.running();
+    },
+    methods: {
+        running: function(){
+            return "i'm running".toLocaleUpperCase();
+        },
+        getMessage: function() {
+            console.log(this.$data.name)
+        }
     }
-  }
 }
 
 const Message = {
