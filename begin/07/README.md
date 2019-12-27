@@ -28,3 +28,20 @@ new Vue({
 ## Computed
 
 A computed property is a feature that help us to avoid any `complex logic` on VueJs instance or Code.
+
+
+```js
+new Vue({
+  el: '#message',
+  data: {
+    message: 'Hello'
+  },
+  computed: {
+    // a computed getter
+    reversedMessage: function () {
+      // `this` points to the vue instance
+      return this.message.split('').reverse().join('')
+    }
+  }
+});
+```

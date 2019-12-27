@@ -1,12 +1,33 @@
 <script src="../vue.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/primitive-ui/dist/css/main.css" />
 
-<div id="app"></div>
+
+<div id="app">
+    <message></message>
+</div>
 
 <script>
 
+Vue.component('message', {
+    template: `
+        <div class="container">
+            <p>Simple case: {{ message }}</p>
+            <p> Upper case: {{ UpperMessage }}</p>
+        </div>
+    `,
+    data() { 
+        return {
+            message: 'The introvert message',
+        }
+    },
+    computed: {
+        UpperMessage: function() {
+            return this.message.toUpperCase();
+        }
+    },
+});
 new Vue({
-    el: "#app",
-    data: { }
+    el: "#app"
 });
 
 </script>
