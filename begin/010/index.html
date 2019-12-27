@@ -1,0 +1,37 @@
+<title>filters</title>
+<link rel="stylesheet" href="https://unpkg.com/primitive-ui/dist/css/main.css" />
+<script src="../vue.js"></script>
+<body>
+    <div class="container" id="app">
+        <br />
+        <input type="text"  name="messagez"  id="messagez">
+        <br>
+        Message : {{ message  | capitalize }}
+    </div>
+</body>
+
+<script>
+
+Vue.filter('capitalize', function(value) {
+        if(!value) return ''
+        value.toString();
+        return value.charAt(0).toUpperCase() + value.slice(1)
+})
+new Vue({
+    el: "#app",
+    data() {
+        return {
+            message: 'Hello world',
+        }
+    },
+    props: {
+        messagez: {
+            type: String
+        }
+    },
+    created() {
+        console.log(this.messagez)
+    },
+})
+
+</script>
