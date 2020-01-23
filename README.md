@@ -4,7 +4,7 @@
 
 This is the companion repository to the Vue Advanced courses.
 
-## What we learn ?
+## What we learn
 
 ## Begin
 
