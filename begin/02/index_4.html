@@ -1,0 +1,68 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://taniarascia.github.io/primitive/css/main.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="https://www.darty.com/static/H6XQ/wro/new_home.pack.css">
+<link rel="stylesheet" href="https://www.darty.com/static/H6XQ/wro/new_common.pack.css">
+<div id="app" class="container">
+        <div>
+            <nav class="navbar navbar-light bg-light">
+                <a class="navbar-brand" href="#">
+                    <img src="https://www.darty.com/static/H6XQ/catalog/desktop_version/common/images/darty_sprite/sprite_darty_logo.png" width="30" height="30" alt="">
+                </a>
+            </nav>
+        </div>
+    <h3>Computer's</h3>
+    <product-card></product-card>
+</div>
+
+<script>
+
+Vue.component('product-card', {
+    template: `
+    <div class="flex-row">
+        <div class="card" v-for="p,i in products" :key="i">
+            <img v-bind:src='p.img' style="width:100%">
+            <div class="container">
+                <span class="rr_item_name"><b>{{ p.name }}</b></span>
+                <p> {{ p.inventory }} produit en stock</p>
+                <span class="darty_prix"> <b>Prix</b> : {{ p.unit_price }} € </span>
+            </div>
+        </div>
+    </div>
+    
+    `,
+    data() {
+        return {
+            products: [
+                {
+                    name: "DELL XPS 13",
+                    inventory: 5,
+                    unit_price: 1399,
+                    img: "https://www.topachat.com/boutique/img/in/in1011/in10118196/in1011819602@2x.jpg"
+                },
+                {
+                    name: "Windows Surface Laptop",
+                    inventory: 10,
+                    unit_price: 2499,
+                    img: "https://www.numerama.com/content/uploads/2017/05/microsoft-surface-laptop-10.jpg"
+                }
+            ]
+        };
+    }
+ });
+
+
+
+
+
+Vue.component('product', {
+    template: `<div><slot></slot></div>`
+
+});
+
+new Vue({
+    el: "#app"
+});
+
+</script>
